@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:cells="clr-namespace:TP2.Core.Cells;assembly=TP2.Core"
+             xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="TP2.Core.Views.ConversationDetailPage">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <cells:CellSelector x:Key="MessageTemplateSelector"></cells:CellSelector>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <Grid RowSpacing="0" ColumnSpacing="0">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+   
+    <ListView 
+      x:Name="MessagesListView" 
+      ItemTemplate="{StaticResource  MessageTemplateSelector}" 
+   
+      ItemsSource="{Binding Messages}" 
+      HasUnevenRows="True"
+      ItemSelected="MyListView_OnItemSelected" 
+      ItemTapped="MyListView_OnItemTapped" 
+      SeparatorVisibility="None" />
+
+ 
+    <StackLayout Orientation="Horizontal" Grid.Row="1" Padding="10" BackgroundColor="#EFEFEF">
+      <Entry 
+        AutomationId="SendEntry"
+        HorizontalOptions="FillAndExpand" 
+        HeightRequest="25" 
+        Placeholder="Message" 
+        Text="{Binding OutGoingText}"/>
+      <Button 
+        AutomationId="SendButton"
+        Text="Send" 
+        Command="{Binding SendCommand}"/>
+    </StackLayout>
+  </Grid>
+
+</ContentPage>

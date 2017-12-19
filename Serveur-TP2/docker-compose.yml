@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  identityServer:
+    # If you specify image as well as build, then Compose names the built 
+    # image with the specified name and optional tag
+    image: identityserver
+    build:
+      context: ./services/identityServer
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:5000
+    ports: 
+      - 5000:5000
+  api:
+    # If you specify image as well as build, then Compose names the built 
+    # image with the specified name and optional tag
+    image: api
+    build:
+      context: ./services/api
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:5001
+    ports: 
+      - 5001:5001
