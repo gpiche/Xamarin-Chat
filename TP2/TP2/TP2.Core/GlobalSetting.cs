@@ -39,11 +39,12 @@ namespace TP2.Core
         public string UserInfoEndpoint { get; set; }
         public string IdentityEndpoint { get; set; }
         public string RestApiEndPoint { get; set; }
+        public string RegistrationEndPoint { get; set; }
 
         private void UpdateEndpoint(string baseEndpoint)
         {
             //Api 
-            RestApiEndPoint = $"{baseEndpoint}:5001/api";
+            RestApiEndPoint = $"{baseEndpoint}:5001/chat/home";
 
             //Identity server
             IdentityEndpoint = $"{baseEndpoint}:5000";
@@ -53,7 +54,10 @@ namespace TP2.Core
             LogoutEndpoint = $"{baseEndpoint}:5000/connect/endsession";
             JwksUri = $"{baseEndpoint}:5000/.well-known/openid-configuration/jwks";
             AuthorizationEndpoint = $"{baseEndpoint}:5000/connect/authorize";
+            RegistrationEndPoint = $"{baseEndpoint}:5000/chat/register";
         }
+
+ 
     }
 }
 

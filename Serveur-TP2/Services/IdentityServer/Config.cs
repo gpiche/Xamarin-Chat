@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 using IdentityServer4.Models;
 using IdentityServer4.Test;
 
@@ -61,7 +59,7 @@ namespace IdentityServerQuickStarts
                 {
                     ClientId = "ro.client",
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
-
+                    AllowedCorsOrigins = {"http://localhost:55167"},
                     ClientSecrets =
                     {
                         new Secret("secret".Sha256())

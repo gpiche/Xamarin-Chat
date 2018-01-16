@@ -7,6 +7,7 @@ using Api.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -32,6 +33,8 @@ namespace Api
                 .AddAuthorization() 
                 .AddJsonFormatters();
 
+    
+
             //the authentication services:
             //  validate the incoming token to make sure it is coming from a trusted issuer
             //  validate that the token is valid to be used with this api(aka scope)
@@ -39,8 +42,8 @@ namespace Api
                 .AddIdentityServerAuthentication(
                     options => //adds the IdentityServer access token validation handler into DI for use by the authentication services.
                     {
-                        options.Authority = $"{Configuration["EXTERNAL_IDENTITY_SERVER_URL"]}";
-                        //options.Authority = "http://localhost:55167/";
+                        //options.Authority = $"{Configuration["EXTERNAL_IDENTITY_SERVER_URL"]}";
+                        options.Authority = "http://localhost:55167/";
                         options.RequireHttpsMetadata = false;
                         options.ApiName = "api1";
                     });
@@ -52,6 +55,8 @@ namespace Api
         public void Configure(IApplicationBuilder app)
         {
             app.UseAuthentication(); // adds the authentication middleware to the pipeline so authentication will be performed automatically on every call into the host.
+
+    
 
             app.UseMvc();
         }

@@ -35,6 +35,7 @@ namespace TP2.Core
             Container.RegisterTypeForNavigation<LoginPage>();
             Container.RegisterTypeForNavigation<ConversationsPage>();
             Container.RegisterTypeForNavigation<ConversationDetailPage>();
+            Container.RegisterTypeForNavigation<RegisterPage>();
 
             //Database
             var databasePath = DependencyService.Get<IFileHelper>().GetLocalFilePath("test200.db3");

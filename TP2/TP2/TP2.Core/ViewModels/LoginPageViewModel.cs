@@ -38,6 +38,7 @@ namespace TP2.Core.ViewModels
             set => SetProperty(ref _errorMessage, value);
         }
         public ICommand AuthenticateCommand => new DelegateCommand(Login);
+        public ICommand RegisterCommand => new DelegateCommand(GoToRegistrationPage);
 
         public LoginPageViewModel(IAuthorizationService authorizationService, INavigationService navigationService, IRessourceService ressourceService)
         {
@@ -60,6 +61,11 @@ namespace TP2.Core.ViewModels
             {
                 ErrorMessage = "Wrong username or password.";
             }
+        }
+
+        private async void GoToRegistrationPage()
+        {
+            await _navigationService.NavigateAsync("RegisterPage");
         }
 
 

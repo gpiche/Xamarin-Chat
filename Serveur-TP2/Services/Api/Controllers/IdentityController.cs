@@ -11,7 +11,6 @@ using Newtonsoft.Json;
 namespace Api.Controllers
 {
     [Route("api/identity")]
-    [Authorize]
     public class IdentityController : ControllerBase
     {
         private readonly InMemoryRepository _repository;

@@ -13,6 +13,7 @@ namespace TP2.Core.Services
     {
         void AddSessionInformation(AccessToken token, string username);
         void SendMessage(MessageDTO messageDto);
+        void Register(RegistrationInformation registrationInformation);
         Task<string> SynchronizeMessage();
         string UserName { get; }
     }

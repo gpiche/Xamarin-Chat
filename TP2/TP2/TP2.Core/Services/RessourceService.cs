@@ -53,5 +53,12 @@ namespace TP2.Core.Services
 
             return content;
         }
+
+        public async void Register(RegistrationInformation registrationInformation)
+        {
+            var jsonRequest = JsonConvert.SerializeObject(registrationInformation);
+            var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+            await _httpClient.PostAsync(GlobalSetting.Instance.RegistrationEndPoint, content);
+        }
     }
 }
