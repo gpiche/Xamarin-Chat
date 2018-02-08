@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "185146169249",
+    "firebase_url": "https://xamarin-chat-ce9b9.firebaseio.com",
+    "project_id": "xamarin-chat-ce9b9",
+    "storage_bucket": "xamarin-chat-ce9b9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185146169249:android:53fb21bdcd4e2a58",
+        "android_client_info": {
+          "package_name": "xamarin.chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "185146169249-nu2ekscf2mdflve076iq1hmf7g3v6fiv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBl-V_6u8aWFtLEBcZgZet4bLMh31iZUk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

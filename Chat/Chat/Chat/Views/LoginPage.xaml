@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             mvvm:ViewModelLocator.AutowireViewModel="True"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             x:Class="Chat.Views.LoginPage"
+             Title="{Binding Title}">
+
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+    <Button Text="Subscribe to the news !" >
+      <Button.Behaviors>
+        <b:EventToCommandBehavior Command="{Binding SubscribeCommand}"
+                                  EventName="Clicked"/>
+      </Button.Behaviors>
+    </Button>
+    </StackLayout>
+
+</ContentPage>

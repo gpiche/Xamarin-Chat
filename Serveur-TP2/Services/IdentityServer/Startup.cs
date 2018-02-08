@@ -36,7 +36,7 @@ namespace IdentityServerQuickStarts
             services.AddMvc();
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite("Filename=C:\\Users\\Guillaume\\Documents\\GitHub\\521-eq-tp2-remhel_guipich\\Serveur-TP2\\Services\\IdentityServer\\dev-chat.sqlite")
+                options.UseSqlite("Filename=./dev-chat.sqlite")
             );
 
             services.AddSingleton<IAuthRepository, AuthRepository>();
