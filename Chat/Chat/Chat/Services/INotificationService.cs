@@ -7,5 +7,6 @@ namespace Chat.Services
     public interface INotificationService
     {
         void Suscribe();
+        void IsPlayServicesAvailable();
     }
 }

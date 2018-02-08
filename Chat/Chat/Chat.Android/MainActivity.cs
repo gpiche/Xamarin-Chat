@@ -8,6 +8,7 @@ using Firebase.Messaging;
 using Firebase.Iid;
 using Android.Util;
 using Chat.Droid.Firebase;
+using Chat.Droid.Services;
 using Chat.Services;
 
 namespace Chat.Droid
@@ -16,7 +17,6 @@ namespace Chat.Droid
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-        const string TAG = "MainActivity";
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -25,33 +25,13 @@ namespace Chat.Droid
 
             base.OnCreate(bundle);
 
-            IsPlayServicesAvailable();
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App(new AndroidInitializer()));
              
         }
 
-        public bool IsPlayServicesAvailable()
-        {
-            int resultCode = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(this);
-            if (resultCode != ConnectionResult.Success)
-            {
-                if (GoogleApiAvailability.Instance.IsUserResolvableError(resultCode)) 
-                    GoogleApiAvailability.Instance.GetErrorString(resultCode);
-                else
-                {
-                    // msgText.Text = "This device is not supported";
-                    Finish();
-                }
-                return false;
-            }
-            else
-            {
-                //msgText.Text = "Google Play Services is available.";
-                return true;
-            }
-        }
+        
     }
 
     public class AndroidInitializer : IPlatformInitializer
@@ -59,6 +39,7 @@ namespace Chat.Droid
         public void RegisterTypes(IContainerRegistry container)
         {
             container.RegisterSingleton< INotificationService, NotificationService>();
+            container.RegisterSingleton<IAlertService, AlertService>();
         }
     }
 

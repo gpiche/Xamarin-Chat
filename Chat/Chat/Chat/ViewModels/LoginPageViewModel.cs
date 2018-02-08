@@ -15,19 +15,19 @@ namespace Chat.ViewModels
     {
         private readonly INotificationService _notificationService;
 
-
+   
         public LoginPageViewModel(INavigationService navigationService, INotificationService notificationService) 
             : base (navigationService)
         {
             Title = "Main Page";
             _notificationService = notificationService;
+            IsPlayServicesAvailable();
         }
 
-        public ICommand SubscribeCommand => new DelegateCommand(Subscribe);
-
-        private void Subscribe()
+    
+        private void IsPlayServicesAvailable()
         {
-            _notificationService.Suscribe();
+            _notificationService.IsPlayServicesAvailable();
         }
     }
 }
