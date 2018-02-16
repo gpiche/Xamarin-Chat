@@ -10,6 +10,9 @@ using Android.Util;
 using Chat.Droid.Firebase;
 using Chat.Droid.Services;
 using Chat.Services;
+using Plugin.Toasts;
+using Xamarin.Forms;
+
 
 namespace Chat.Droid
 {
@@ -22,6 +25,9 @@ namespace Chat.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+
+            DependencyService.Register<ToastNotification>();
+            ToastNotification.Init(this);
 
             base.OnCreate(bundle);
 

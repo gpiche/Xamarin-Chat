@@ -4,6 +4,7 @@
              xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              mvvm:ViewModelLocator.AutowireViewModel="True"
              xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              xmlns:local="clr-namespace:Chat.Controls;assembly=Chat"
              x:Class="Chat.Views.LoginPage"
              BackgroundImage="login_Background.jpg">
@@ -23,7 +24,7 @@
           HorizontalOptions="CenterAndExpand">
           <StackLayout Orientation="Horizontal">
             <Label Text="Onion" TextColor="White" FontSize="30" Margin="0,50,0,0"></Label>
-          <Image Source="chat" Margin="30,5,0,0"></Image>
+            <Image Source="chat" Margin="30,5,0,0"></Image>
             <Label Text="Chat" TextColor="White" FontSize="30" Margin="20,50,0,0"></Label>
           </StackLayout>
           <Image Source="onion" Margin="0,0,100,0"></Image>
@@ -33,6 +34,7 @@
 
 
         <local:MyCustomEntry TextColor="Black" 
+                          Text="{Binding UserName, Mode=TwoWay}"
                           Image="user" 
                           PlaceholderColor="{StaticResource primary}" 
                           Placeholder="Email" 
@@ -40,13 +42,23 @@
                           Keyboard="Email"/>
         
         <local:MyCustomEntry TextColor="Black" 
+                             Text="{Binding Password, Mode=TwoWay}"
                              Image="password" 
                              PlaceholderColor="{StaticResource primary}" 
                              Placeholder="Password" 
                              HorizontalOptions="FillAndExpand"
                              IsPassword="True"/>
+          <Label Text="{Binding ErrorMessage, Mode=OneWay}" TextColor="Red"></Label>
           <StackLayout Padding="20">
-          <local:MyCustomButton Text="Login"></local:MyCustomButton>
+          <local:MyCustomButton Text="Login">
+            <Button.Behaviors>
+              <behaviors:EventToCommandBehavior
+                EventName="Clicked"
+                Command="{Binding AuthenticateCommand}"
+              ></behaviors:EventToCommandBehavior>
+            </Button.Behaviors>
+            </local:MyCustomButton>
+            
             <StackLayout Orientation="Horizontal" Padding="40"  HorizontalOptions="CenterAndExpand">
               <Label Text="Forgot Password" TextColor="White" FontSize="12"  HorizontalOptions="Start" Margin="0,0,0,0">
                 <Label.GestureRecognizers>

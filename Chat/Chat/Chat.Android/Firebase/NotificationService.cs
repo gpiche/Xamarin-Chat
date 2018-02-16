@@ -3,6 +3,7 @@ using Android.Gms.Common;
 using Chat.Services;
 using Firebase.Iid;
 using Android.Util;
+using Android.Widget;
 
 namespace Chat.Droid.Firebase
 {

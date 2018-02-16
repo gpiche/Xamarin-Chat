@@ -5,6 +5,8 @@ using Android.Media;
 using Android.Util;
 using Firebase.Messaging;
 using System.Collections.Generic;
+using Plugin.Toasts;
+using Xamarin.Forms;
 
 
 namespace Chat.Droid.Firebase
@@ -24,22 +26,15 @@ namespace Chat.Droid.Firebase
 
         void SendNotification(string messageBody, IDictionary<string, string> data)
         {
-            var intent = new Intent(this, typeof(MainActivity));
-            intent.AddFlags(ActivityFlags.ClearTop);
-            foreach (string key in data.Keys)
+            var notificator = DependencyService.Get<IToastNotificator>();
+
+            var options = new NotificationOptions()
             {
-                intent.PutExtra(key, data[key]);
-            }
-            var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
+                Title = "Alexe",
+                Description = messageBody
+            };
 
-            var notificationBuilder = new Notification.Builder(this)
-                .SetContentTitle("FCM Message")
-                .SetContentText(messageBody)
-                .SetAutoCancel(true)
-                .SetContentIntent(pendingIntent);
-
-            var notificationManager = NotificationManager.FromContext(this);
-            notificationManager.Notify(0, notificationBuilder.Build());
+            notificator.Notify(options);
         }
     }
 }

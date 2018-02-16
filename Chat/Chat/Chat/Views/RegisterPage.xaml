@@ -4,6 +4,7 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:controls="clr-namespace:Chat.Controls;assembly=Chat"
              prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              x:Class="Chat.Views.RegisterPage"
              BackgroundImage="login_Background.jpg">
 
@@ -22,22 +23,78 @@
         <Label Text="Register" TextColor="White" FontSize="30"></Label>
 
         <controls:MyCustomEntry TextColor="Black" 
+                          Text="{Binding UserName.Value, Mode=TwoWay}"
                           PlaceholderColor="{StaticResource primary}" 
                           Placeholder="Email" 
                           HorizontalOptions="FillAndExpand"
-                          Keyboard="Email"/>
+                          Keyboard="Email">
+          <Entry.Triggers>
+            <DataTrigger TargetType="Entry" 
+                         Binding="{Binding UserName.IsValid}" 
+                         Value="False">
+               <Setter 
+                Property="TextColor"
+                Value="Red" />
+            </DataTrigger>
+          </Entry.Triggers>
+          <Entry.Behaviors>
+            <behaviors:EventToCommandBehavior
+              EventName="TextChanged"
+              Command="{Binding ValidateUserNameCommand}"
+            />
+          </Entry.Behaviors>
+
+        </controls:MyCustomEntry>
 
         <controls:MyCustomEntry TextColor="Black" 
+                             Text="{Binding Password.Value, Mode=TwoWay}"
                              PlaceholderColor="{StaticResource primary}" 
                              Placeholder="Password" 
                              HorizontalOptions="FillAndExpand"
-                             IsPassword="True"/>
+                             IsPassword="True">
+          <Entry.Triggers>
+            <DataTrigger TargetType="Entry" 
+                         Binding="{Binding Password.IsValid}" 
+                         Value="False">
+              <Setter 
+                Property="TextColor"
+                Value="Red" />
+            </DataTrigger>
+          </Entry.Triggers>
+          <Entry.Behaviors>
+            <behaviors:EventToCommandBehavior
+              EventName="TextChanged"
+              Command="{Binding ValidatePasswordCommand}"
+            />
+          </Entry.Behaviors>
+
+        </controls:MyCustomEntry>
 
         <controls:MyCustomEntry TextColor="Black" 
+                                Text="{Binding PasswordConfirmation.Value, Mode=TwoWay}"
                                   PlaceholderColor="{StaticResource primary}" 
                                   Placeholder="Confirm Password" 
                                   HorizontalOptions="FillAndExpand"
-                                  IsPassword="True"/>
+                                  IsPassword="True">
+
+          <Entry.Triggers>
+            <DataTrigger TargetType="Entry" 
+                         Binding="{Binding PasswordConfirmation.IsValid}" 
+                         Value="False">
+              <Setter 
+                Property="TextColor"
+                Value="Red" />
+            </DataTrigger>
+          </Entry.Triggers>
+          <Entry.Behaviors>
+            <behaviors:EventToCommandBehavior
+              EventName="TextChanged"
+              Command="{Binding ValidatePasswordConfirmationCommand}"
+            />
+          </Entry.Behaviors>
+
+        </controls:MyCustomEntry>
+        
         <controls:MyCustomEntry TextColor="Black" 
                                 PlaceholderColor="{StaticResource primary}" 
                                 Placeholder="First Name" 
