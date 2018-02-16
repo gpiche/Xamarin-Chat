@@ -4,16 +4,65 @@
              xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              mvvm:ViewModelLocator.AutowireViewModel="True"
              xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             xmlns:local="clr-namespace:Chat.Controls;assembly=Chat"
              x:Class="Chat.Views.LoginPage"
-             Title="{Binding Title}">
+             BackgroundImage="login_Background.jpg">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-    <Button Text="Subscribe to the news !" >
-      <Button.Behaviors>
-        <b:EventToCommandBehavior Command="{Binding SubscribeCommand}"
-                                  EventName="Clicked"/>
-      </Button.Behaviors>
-    </Button>
-    </StackLayout>
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Color x:Key="primary">#3ec3d5</Color>
+    </ResourceDictionary>
+  </ContentPage.Resources>
 
+
+  <ContentPage.Content>
+    <ScrollView>
+      <StackLayout  Spacing="10">
+        <StackLayout
+          VerticalOptions="Start"
+          HorizontalOptions="CenterAndExpand">
+          <StackLayout Orientation="Horizontal">
+            <Label Text="Onion" TextColor="White" FontSize="30" Margin="0,50,0,0"></Label>
+          <Image Source="chat" Margin="30,5,0,0"></Image>
+            <Label Text="Chat" TextColor="White" FontSize="30" Margin="20,50,0,0"></Label>
+          </StackLayout>
+          <Image Source="onion" Margin="0,0,100,0"></Image>
+        </StackLayout>
+        
+        <StackLayout Padding="40">
+
+
+        <local:MyCustomEntry TextColor="Black" 
+                          Image="user" 
+                          PlaceholderColor="{StaticResource primary}" 
+                          Placeholder="Email" 
+                          HorizontalOptions="FillAndExpand"
+                          Keyboard="Email"/>
+        
+        <local:MyCustomEntry TextColor="Black" 
+                             Image="password" 
+                             PlaceholderColor="{StaticResource primary}" 
+                             Placeholder="Password" 
+                             HorizontalOptions="FillAndExpand"
+                             IsPassword="True"/>
+          <StackLayout Padding="20">
+          <local:MyCustomButton Text="Login"></local:MyCustomButton>
+            <StackLayout Orientation="Horizontal" Padding="40"  HorizontalOptions="CenterAndExpand">
+              <Label Text="Forgot Password" TextColor="White" FontSize="12"  HorizontalOptions="Start" Margin="0,0,0,0">
+                <Label.GestureRecognizers>
+                  <TapGestureRecognizer Command="{Binding TestCommand}" />
+                </Label.GestureRecognizers>
+              </Label>
+              <Label Text="|" TextColor="White" HorizontalOptions="Center"></Label>
+              <Label Text="Register" TextColor="White" FontSize="12"  HorizontalOptions="End" Margin="0,0,0,0">
+                <Label.GestureRecognizers>
+                  <TapGestureRecognizer Command="{Binding TestCommand}" />
+                </Label.GestureRecognizers>
+              </Label>
+            </StackLayout>
+          </StackLayout>
+        </StackLayout>
+      </StackLayout>
+    </ScrollView>
+  </ContentPage.Content>
 </ContentPage>
