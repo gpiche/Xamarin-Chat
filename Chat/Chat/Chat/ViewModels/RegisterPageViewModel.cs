@@ -45,13 +45,11 @@ namespace Chat.ViewModels
 			_navigationService = navigationService;
 
 			_userName = new ValidatableObject<string>();
-			AddEmailValidations();
-
 			_password = new ValidatableObject<string>();
-			AddPasswordValidations();
-
 			_passwordConfirmation = new ValidatableObject<string>();
-			AddPasswordConfrimationValidations();
+
+			AddValidations();
+	
 		}
 
 		private void ValidatePassword()
@@ -69,22 +67,12 @@ namespace Chat.ViewModels
 			_passwordConfirmation.Validate(_password.Value);
 		}
 
-
-		private void AddEmailValidations()
+		private void AddValidations()
 		{
 			_userName.Validations.Add(new EmailValidation<string>());
-		}
-
-		private void AddPasswordValidations()
-		{
 			_password.Validations.Add(new PasswordValidation<string>());
-		}
-
-		private void AddPasswordConfrimationValidations()
-		{
 			_passwordConfirmation.Validations.Add(new PasswordConfirmationValidation<string>());
 		}
-
 
 		private void Login()
 		{
