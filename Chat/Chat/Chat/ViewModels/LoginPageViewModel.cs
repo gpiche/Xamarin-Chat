@@ -14,14 +14,23 @@ namespace Chat.ViewModels
     public class LoginPageViewModel : ViewModelBase
     {
         private readonly INotificationService _notificationService;
+        private readonly INavigationService _navigationService;
+
+        public ICommand NavigateToRegisterCommand => new DelegateCommand(Register);
 
    
         public LoginPageViewModel(INavigationService navigationService, INotificationService notificationService) 
             : base (navigationService)
         {
-            Title = "Main Page";
             _notificationService = notificationService;
+            _navigationService = navigationService;
             IsPlayServicesAvailable();
+        }
+
+
+        private void Register()
+        {
+            _navigationService.NavigateAsync("RegisterPage");
         }
 
     

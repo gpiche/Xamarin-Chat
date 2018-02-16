@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:controls="clr-namespace:Chat.Controls;assembly=Chat"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Chat.Views.RegisterPage"
+             BackgroundImage="login_Background.jpg">
+
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Color x:Key="primary">#3ec3d5</Color>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+
+  <ContentPage.Content>
+  <ScrollView>
+
+      <StackLayout Padding="40"  Spacing="20">
+        <Label Text="Register" TextColor="White" FontSize="30"></Label>
+
+        <controls:MyCustomEntry TextColor="Black" 
+                          PlaceholderColor="{StaticResource primary}" 
+                          Placeholder="Email" 
+                          HorizontalOptions="FillAndExpand"
+                          Keyboard="Email"/>
+
+        <controls:MyCustomEntry TextColor="Black" 
+                             PlaceholderColor="{StaticResource primary}" 
+                             Placeholder="Password" 
+                             HorizontalOptions="FillAndExpand"
+                             IsPassword="True"/>
+
+        <controls:MyCustomEntry TextColor="Black" 
+                                  PlaceholderColor="{StaticResource primary}" 
+                                  Placeholder="Confirm Password" 
+                                  HorizontalOptions="FillAndExpand"
+                                  IsPassword="True"/>
+        <controls:MyCustomEntry TextColor="Black" 
+                                PlaceholderColor="{StaticResource primary}" 
+                                Placeholder="First Name" 
+                                HorizontalOptions="FillAndExpand"
+                               />
+        <controls:MyCustomEntry TextColor="Black" 
+                                PlaceholderColor="{StaticResource primary}" 
+                                Placeholder="Last Name" 
+                                HorizontalOptions="FillAndExpand"
+        />
+        <StackLayout Padding="10">
+          <controls:MyCustomButton Text="Register"></controls:MyCustomButton>
+
+          <Label  Margin="0,10,0,0" Text="I have an account" TextColor="White" FontSize="12"  HorizontalOptions="Center">
+            <Label.GestureRecognizers>
+              <TapGestureRecognizer Command="{Binding NavigateToLoginCommand}" />
+            </Label.GestureRecognizers>
+          </Label>
+        </StackLayout>
+      </StackLayout>
+    </ScrollView>
+  </ContentPage.Content>
+
+</ContentPage>

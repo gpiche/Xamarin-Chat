@@ -32,8 +32,10 @@ namespace Chat
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<LoginPage>();
+            containerRegistry.RegisterForNavigation<RegisterPage>();
 
-        
+
+
         }
     }
 }
