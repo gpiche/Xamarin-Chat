@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Chat.Validations
 {
-    class PasswordValidation<T> : IValidationRule<T>
+   public  class PasswordValidation<T> : IValidationRule<T>
     {
         public string ValidateMessage { get; set; }
 

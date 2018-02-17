@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Chat.Validations
 {
-    class EmailValidation <T> : IValidationRule<T>
+    public class EmailValidation <T> : IValidationRule<T>
     {
         private readonly string _errorMessage = "Email field not valid.";
         private readonly List<char> listSpecialCharacters = new List<char> { '&', '/', '>', '<', '=', '+', '$', '%', '!', '#' };
