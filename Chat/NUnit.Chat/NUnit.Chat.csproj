@@ -104,15 +104,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mock\MockRule.cs" />
+    <Compile Include="Mock\NavigationMock.cs" />
+    <Compile Include="Mock\NotificationServiceMock.cs" />
     <Compile Include="Rules\Email\SpecialsCharacters.cs" />
     <Compile Include="Rules\Email\TestsAtSign.cs" />
     <Compile Include="Rules\Email\TextExtension.cs" />
+    <Compile Include="Rules\PasswordConfirmation\PasswordConfirmationRules.cs" />
     <Compile Include="Rules\Password\ContainsACapitalLetter.cs" />
     <Compile Include="Rules\Password\ContainsALowerCaseLetter.cs" />
     <Compile Include="Rules\Password\ContainsANumber.cs" />
     <Compile Include="Rules\Password\MoreThanTenCharacters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rules\ValidatableObjectsTest.cs" />
+    <Compile Include="ViewModels\LoginPageViewModelTest.cs" />
+    <Compile Include="ViewModels\RegisterPageViewModelTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

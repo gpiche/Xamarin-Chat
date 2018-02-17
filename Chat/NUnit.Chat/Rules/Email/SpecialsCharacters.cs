@@ -29,7 +29,7 @@ namespace NUnit.Lab9.Test.Rules.Email
         [TestCase("a@b.com", true)]
         [TestCase("aaaaa@gmail.com", true)]
         [TestCase("ecole_fini_dans_4_semaine@gmail.ca", true)]
-        public void ValidateEmail_WhenEmailContainsGoodCharacter_ReturnFalse(string currentEntry, bool expectedValue)
+        public void ValidateEmail_WhenEmailContainsGoodCharacter_ReturnTrue(string currentEntry, bool expectedValue)
         {
             EmailValidation<string> validationEmail = new EmailValidation<string>();
 
