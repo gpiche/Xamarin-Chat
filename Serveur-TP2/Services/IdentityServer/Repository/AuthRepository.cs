@@ -13,6 +13,8 @@ namespace IdentityServer.Services
         {
             _context = context;
             _cryptoService = cryptoService;
+
+            
         }
 
         public void Add(User newUser)

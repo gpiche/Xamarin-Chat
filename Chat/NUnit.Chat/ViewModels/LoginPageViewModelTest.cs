@@ -24,7 +24,7 @@ namespace NUnit.Lab9.Test.ViewModels
 
             _navigationMock = new NavigationMock();
             _notificationServiceMock = new NotificationServiceMock();
-            _loginPageViewModel = new LoginPageViewModel(_navigationMock, _notificationServiceMock);
+            _loginPageViewModel = new LoginPageViewModel(_navigationMock, _notificationServiceMock, null, null);
 
         }
 

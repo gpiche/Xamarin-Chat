@@ -16,7 +16,7 @@ namespace IdentityServer.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.0.1-rtm-125");
+                .HasAnnotation("ProductVersion", "2.0.0-rtm-26452");
 
             modelBuilder.Entity("IdentityServer.Models.User", b =>
                 {
@@ -26,6 +26,10 @@ namespace IdentityServer.Migrations
                     b.Property<bool>("Active");
 
                     b.Property<string>("Email");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
 
                     b.Property<string>("Password");
 

@@ -59,7 +59,6 @@ namespace IdentityServerQuickStarts
                 {
                     ClientId = "ro.client",
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
-                    AllowedCorsOrigins = {"http://localhost:55167"},
                     ClientSecrets =
                     {
                         new Secret("secret".Sha256())

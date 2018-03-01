@@ -37,7 +37,9 @@ namespace IdentityServer.Controller
                     Salt = salt,
                     Email = registrationInformation.Email,
                     Password = _cryptoService.HashSha512(registrationInformation.Password, salt),
-                    Active = true
+                    Active = true,
+                    FirstName = registrationInformation.FirstName,
+                    LastName = registrationInformation.LastName
 
                 };
                _repository.Add(user);

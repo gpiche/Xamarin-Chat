@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using System.Threading.Tasks;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System.Windows.Input;
@@ -12,7 +13,9 @@ namespace Chat.ViewModels
     {
         private readonly INotificationService _notificationService;
         private readonly INavigationService _navigationService;
-                private string _userName;
+        private readonly IAuthorizationService _authorizationService;
+        private readonly IAccountStoreService _accountStoreService;
+        private string _userName;
         private string _password;
         private string _errorMessage;
 
@@ -38,25 +41,28 @@ namespace Chat.ViewModels
         public ICommand NavigateToRegisterCommand => new DelegateCommand(Register);
 
    
-        public LoginPageViewModel(INavigationService navigationService, INotificationService notificationService) 
+        public LoginPageViewModel(INavigationService navigationService, INotificationService notificationService, IAuthorizationService authorizationService, IAccountStoreService accountStoreService) 
             : base (navigationService)
         {
             _notificationService = notificationService;
             _navigationService = navigationService;
+            _authorizationService = authorizationService;
+            _accountStoreService = accountStoreService;
             IsPlayServicesAvailable();
         }
 
 
-        private void Authenticate()
+        private async void Authenticate()
         {
-            //Todo add real validation
-            if (UserName == "123" && Password == "1234")
+            var accestoken = await _authorizationService.AuthenticateAsync(UserName, Password);
+
+            if (!accestoken.IsNullOrEmpty)
             {
-              
+                _accountStoreService.SaveCredentials(UserName, accestoken.Token);
             }
             else
             {
-                ErrorMessage = "Wrong user name or password.";
+                ErrorMessage = "Wrong username or password.";
             }
         }
 

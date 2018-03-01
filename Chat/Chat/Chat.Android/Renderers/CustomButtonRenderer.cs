@@ -42,8 +42,8 @@ namespace Chat.Droid.Renderers
 
                 // Create a drawable for the button's pressed state
                 _pressed = new Android.Graphics.Drawables.GradientDrawable();
-                var highlight = Context.ObtainStyledAttributes(new int[] { Android.Resource.Attribute.ColorActivatedHighlight }).GetColor(1, Android.Graphics.Color.Green);
-                _pressed.SetColor(highlight);
+                //var highlight = Context.ObtainStyledAttributes(new int[] { Android.Resource.Attribute.ColorActivatedHighlight }).GetColor(1, Android.Graphics.Color.Green);
+                //_pressed.SetColor(highlight);
                 _pressed.SetStroke((int)button.BorderWidth, button.BorderColor.ToAndroid());
                 _pressed.SetCornerRadius(60f);
 
